@@ -20,7 +20,7 @@
   /* Формула 11 * 0.5 + 2 = 7.5 */
   animation: 7.5s ease-in-out orbita infinite;
   z-index: 0;
-  /* animation-direction: reverse; */
+  animation-direction: reverse;
 }
 
 @keyframes orbita {
