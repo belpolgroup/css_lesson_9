@@ -1,0 +1,51 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    background-color: #070d16;
+}
+
+.scene {
+    position: relative;
+    width: min(92vw, 650px);
+    aspect-ratio: 4 / 3;
+    background-image: url("../images/cosmos.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.earth {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 46%;
+    height: auto;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+.orbit {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40%;
+    aspect-ratio: 1;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+}
+
+.moon {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    width: 44%;
+    height: auto;
+    transform: translate(-50%, -50%);
+}
