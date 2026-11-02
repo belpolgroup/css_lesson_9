@@ -1,0 +1,83 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font: 1em sans-serif;
+  background-color: #000;
+  background-image: url("../images/cosmos.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+/* 1. Планета Земля */
+.earth {
+  width: 300px;
+  padding: 100px;
+  position: relative;
+  z-index: 1; /* слой для перекрытия спутника */
+  /* вращение вокруг оси */
+  animation: earth-spin 15s linear infinite;
+}
+
+/* 2. Спутник Луна */
+.moon {
+  position: absolute;
+  top: 170px;
+  left: 170px;
+  width: 72px;
+  z-index: 0; /* Стартует позади Земли */
+  /* 
+     Кузнецов = 8 букв -> (8 * 0.5) + 2 = 6s
+     Нечетный номер -> ease-in-out + reverse */
+  animation: orbita 6s ease-in-out reverse infinite;
+}
+
+/* Орбита Луны */
+@keyframes orbita {
+  0% {
+    width: 72px;
+  }
+  24% {
+    z-index: 0; /* До выхода держится за Землей */
+  }
+  25% {
+    left: 380px;
+    top: 130px;
+    z-index: 2; /* Выходит на передний план */
+  }
+  50% {
+    width: 128px; /* Пик приближения к экрану */
+  }
+  74% {
+    z-index: 2; /* Остается спереди планеты */
+  }
+  75% {
+    top: 300px;
+    left: 40px;
+    z-index: 0; /* Уходит за Землю */
+  }
+  100% {
+    width: 72px;
+    transform: rotate(360deg); /* Оборот вокруг своей оси */
+  }
+}
+
+/* Вращение Земли вокруг своей оси */
+@keyframes earth-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Своими словами
+1. За счет комбинации свойств position (relative у Земли, absolute у Луны) и переключения z-index в ключевых кадрах. при z-index: 0 Луна прячется за Землю (у которой z-index: 1), а при z-index: 2 выходит на передний план.
+2. Значение infinite делает анимацию бесконечной, заставляя цикл повторяться без остановки.
+*/
